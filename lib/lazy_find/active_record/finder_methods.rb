@@ -13,7 +13,8 @@ module LazyFind
     #   Person.first(:email => "jenorish@gmail") # returns the first three objects fetched by SELECT * FROM people WHERE email= 'jenorish@gmail.com'  ORDER BY people.id LIMIT 3
  
       def first(attr = nil)
-         lazy_find(attr,:first).first
+         return super(attr) if attr.blank? || attr.class == Fixnum 
+         lazy_find(attr,:first)
       end
 
 
@@ -35,6 +36,7 @@ module LazyFind
 
 
       def last(attr = nil)
+        return super(attr) if attr.blank? || attr.class == Fixnum 
         lazy_find(attr,:last)
       end
     
@@ -46,20 +48,21 @@ module LazyFind
     #   Person.take({:email => "jenorish@gmail"}) # returns matched objects fetched by SELECT * FROM people WHERE email= 'jenorish@gmail.com' LIMIT 5
     #   Person.where(["name LIKE '%?'", name]).take
 
-      def take(limit = nil)
+      def take(attr = nil)
+        return super(attr) if attr.blank? || attr.class == Fixnum 
         lazy_find(attr,:take)
       end
 
  private
 
- 	def lazy_find(attr,filter)
- 	  case attr.class		    
-	    when Hash, Array, String
-		  where(attr).send(filter)
-		else
-		  super()
-		end
-	end
+     	def lazy_find(attr,filter)
+     	  case attr.class		    
+    	    when Hash, Array, String
+    		  where(attr).send(filter,nil)
+    		else
+    		  send(filter,nil)
+    		end
+    	end
 
     end
   end
