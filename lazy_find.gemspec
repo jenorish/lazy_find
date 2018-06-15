@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{This gem used to find the first attribute with lazy way.}
   spec.description   = %q{This gem used to find the first attribute with lazy way.}
-  spec.homepage      = " "
+  spec.homepage      = "https://github.com/jenorish/lazy_find"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
