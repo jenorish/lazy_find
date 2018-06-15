@@ -23,15 +23,15 @@ Or install it yourself as:
 
 ## Usage
 
-	Simplified the first,last,take methods in ActiveRecord.
+  Simplified the first,last,take methods in ActiveRecord.
 
         Find the first record (or first N records if a parameter is supplied).
 
-        Old Syntax:
+   Old Syntax:
 
         Person.where(:email => "jenorish@gmail").first
 
-        New Syntax:
+   New Syntax:
 
         Person.first(:email => "jenorish@gmail")
 
