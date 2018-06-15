@@ -1,5 +1,10 @@
 # LazyFind
 
+## Description
+   
+    Simplified the first,last,take methods in ActiveRecord.So instead of using where and first, you can directly use first.
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -20,9 +25,17 @@ Or install it yourself as:
 
 	Simplified the first,last,take methods in ActiveRecord.
 
-    `Find the first record (or first N records if a parameter is supplied).
-        Person.where(:email => "jenorish@gmail").first instead we can use Person.first(:email => "jenorish@gmail")
-        # returns the first three objects fetched by SELECT * FROM people WHERE email= 'jenorish@gmail.com'  ORDER BY people.id LIMIT 3`
+        Find the first record (or first N records if a parameter is supplied).
+
+        Old Syntax:
+
+        Person.where(:email => "jenorish@gmail").first
+
+        New Syntax:
+
+        Person.first(:email => "jenorish@gmail")
+
+        # returns the first three objects fetched by SELECT * FROM people WHERE email= 'jenorish@gmail.com'  ORDER BY people.id LIMIT 3
  
 
 ## Development
