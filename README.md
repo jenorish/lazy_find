@@ -18,7 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+	Simplified the first,last,take methods in ActiveRecord.
+
+    `Find the first record (or first N records if a parameter is supplied).
+        Person.where(:email => "jenorish@gmail").first instead we can use Person.first(:email => "jenorish@gmail")
+        # returns the first three objects fetched by SELECT * FROM people WHERE email= 'jenorish@gmail.com'  ORDER BY people.id LIMIT 3`
+ 
 
 ## Development
 
