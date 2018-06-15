@@ -2,8 +2,7 @@
 
 ## Description
    
-    Simplified the first,last,take methods in ActiveRecord.
-    So instead of using where and first, you can directly use first.
+    Simplified the first,last,take methods in ActiveRecord.So instead of using where and first, you can directly use first.
 
 
 ## Installation
