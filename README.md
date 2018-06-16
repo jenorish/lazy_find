@@ -5,6 +5,7 @@
     Simplified the first,last,take methods in ActiveRecord.So instead of using where and first, you can directly use first.
 
 
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -49,6 +50,15 @@ Or install it yourself as:
 
      Person.first(:email => "jenorish@gmail",:order => "created_at", select: [:name, :email])
 
+## New methods
+
+  We can use find all in lazy way by passing like below
+
+    Person.lazy_all(:email => "jenorish@gmail",:order => "created_at") 
+
+ And support `Rails 3` where syntax
+
+     Person.lazy_where(:email => "jenorish@gmail",:order => "created_at") 
 
 
 ## Development
