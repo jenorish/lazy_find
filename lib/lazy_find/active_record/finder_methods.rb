@@ -53,6 +53,17 @@ module LazyFind
         lazy_find(attr,:take)
       end
 
+    # posts = Post.all
+    # posts.size # Fires "select count(*) from  posts" and returns the count    
+    # posts.each {|p| puts p.name } # Fires "select * from posts" and loads post objects
+   
+    def lazy_all(attr = nil)
+      return all if attr.blank?
+      lazy_find(attr,:all)
+    end
+
+    alias_method :lazy_where, :lazy_all
+
  private
 
      	def lazy_find(attr,filter)
@@ -60,9 +71,9 @@ module LazyFind
           sort_val   = extract_order(attr)
           select_val = extract_select(attr) 
           if select_val
-            where(attr).order(sort_val).select(select_val).send(filter,nil)
+            where(attr).order(sort_val).select(select_val).send(filter)
           else
-    		    where(attr).order(sort_val).send(filter,nil)
+    		    where(attr).order(sort_val).send(filter)
           end
     		else
     		 send(filter,nil)
