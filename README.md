@@ -39,13 +39,13 @@ Or install it yourself as:
  
 ## Order 
 
-     We can find first value with order as well 
+   We can find first value with order as well 
 
      Person.first(:email => "jenorish@gmail",:order => "created_at")
 
 ## Select
   
-     Pass select key to select some filds
+   Pass select key to select some filds
 
      Person.first(:email => "jenorish@gmail",:order => "created_at", select: [:name, :email])
 
