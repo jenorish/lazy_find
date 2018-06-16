@@ -57,13 +57,28 @@ module LazyFind
 
      	def lazy_find(attr,filter)
     	  if [Hash, Array, String].include?(attr.class)
-    		  result = where(attr).send(filter,nil)
+          sort_val   = extract_order(attr)
+          select_val = extract_select(attr) 
+          if select_val
+            where(attr).order(sort_val).select(select_val).send(filter,nil)
+          else
+    		    where(attr).order(sort_val).send(filter,nil)
+          end
     		else
-    		 result  = send(filter,nil)
+    		 send(filter,nil)
     		end
-        result
-    	end
+      end
 
+      def extract_order(attr)
+        return "id" unless attr.class == Hash
+        attr.symbolize_keys!
+        order = attr.delete(:order) 
+        order ? order : "id"
+      end
+      def extract_select(attr)
+        return nil unless attr.class == Hash
+        attr.delete(:select) 
+      end
     end
   end
 end
