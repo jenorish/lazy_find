@@ -2,7 +2,6 @@ module LazyFind
   module ActiveRecord
     module FinderMethods
 
-    MAPPING = {:first => 0, :last => -1}
     # Find the first record (or first N records if a parameter is supplied).
     # If no order is defined it will order by primary key.
     #
